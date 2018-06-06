@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AutoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="auto">
+          <Key>
+            <PropertyRef Name="kenteken" />
+          </Key>
+          <Property Name="kenteken" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="merk" Type="nvarchar" MaxLength="25" />
+          <Property Name="Type" Type="nvarchar" MaxLength="25" />
+          <Property Name="DEALER_dealernr" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dealer">
+          <Key>
+            <PropertyRef Name="dealernr" />
+          </Key>
+          <Property Name="dealernr" Type="int" Nullable="false" />
+          <Property Name="naam" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="onderhoud">
+          <Key>
+            <PropertyRef Name="onderhoudsdatum" />
+            <PropertyRef Name="auto_kenteken" />
+          </Key>
+          <Property Name="onderhoudsdatum" Type="date" Nullable="false" />
+          <Property Name="kosten" Type="smallmoney" />
+          <Property Name="auto_kenteken" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="werkplaats_werkplaatsnr" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="werkplaats">
+          <Key>
+            <PropertyRef Name="werkplaatsnr" />
+          </Key>
+          <Property Name="werkplaatsnr" Type="int" Nullable="false" />
+          <Property Name="naam" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="auto_dealer_fk">
+          <End Role="dealer" Type="Self.dealer" Multiplicity="1" />
+          <End Role="auto" Type="Self.auto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dealer">
+              <PropertyRef Name="dealernr" />
+            </Principal>
+            <Dependent Role="auto">
+              <PropertyRef Name="DEALER_dealernr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="onderhoud_auto_fk">
+          <End Role="auto" Type="Self.auto" Multiplicity="1" />
+          <End Role="onderhoud" Type="Self.onderhoud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="auto">
+              <PropertyRef Name="kenteken" />
+            </Principal>
+            <Dependent Role="onderhoud">
+              <PropertyRef Name="auto_kenteken" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="onderhoud_werkplaats_fk">
+          <End Role="werkplaats" Type="Self.werkplaats" Multiplicity="1" />
+          <End Role="onderhoud" Type="Self.onderhoud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="werkplaats">
+              <PropertyRef Name="werkplaatsnr" />
+            </Principal>
+            <Dependent Role="onderhoud">
+              <PropertyRef Name="werkplaats_werkplaatsnr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AutoModelStoreContainer">
+          <EntitySet Name="auto" EntityType="Self.auto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dealer" EntityType="Self.dealer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="onderhoud" EntityType="Self.onderhoud" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="werkplaats" EntityType="Self.werkplaats" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="auto_dealer_fk" Association="Self.auto_dealer_fk">
+            <End Role="dealer" EntitySet="dealer" />
+            <End Role="auto" EntitySet="auto" />
+          </AssociationSet>
+          <AssociationSet Name="onderhoud_auto_fk" Association="Self.onderhoud_auto_fk">
+            <End Role="auto" EntitySet="auto" />
+            <End Role="onderhoud" EntitySet="onderhoud" />
+          </AssociationSet>
+          <AssociationSet Name="onderhoud_werkplaats_fk" Association="Self.onderhoud_werkplaats_fk">
+            <End Role="werkplaats" EntitySet="werkplaats" />
+            <End Role="onderhoud" EntitySet="onderhoud" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AutoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="auto">
+          <Key>
+            <PropertyRef Name="kenteken" />
+          </Key>
+          <Property Name="kenteken" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="merk" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="DEALER_dealernr" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="dealer" Relationship="Self.auto_dealer_fk" FromRole="auto" ToRole="dealer" />
+          <NavigationProperty Name="onderhoud" Relationship="Self.onderhoud_auto_fk" FromRole="auto" ToRole="onderhoud" />
+        </EntityType>
+        <EntityType Name="dealer">
+          <Key>
+            <PropertyRef Name="dealernr" />
+          </Key>
+          <Property Name="dealernr" Type="Int32" Nullable="false" />
+          <Property Name="naam" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="auto" Relationship="Self.auto_dealer_fk" FromRole="dealer" ToRole="auto" />
+        </EntityType>
+        <EntityType Name="onderhoud">
+          <Key>
+            <PropertyRef Name="onderhoudsdatum" />
+            <PropertyRef Name="auto_kenteken" />
+          </Key>
+          <Property Name="onderhoudsdatum" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="kosten" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="auto_kenteken" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="werkplaats_werkplaatsnr" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="auto" Relationship="Self.onderhoud_auto_fk" FromRole="onderhoud" ToRole="auto" />
+          <NavigationProperty Name="werkplaats" Relationship="Self.onderhoud_werkplaats_fk" FromRole="onderhoud" ToRole="werkplaats" />
+        </EntityType>
+        <EntityType Name="werkplaats">
+          <Key>
+            <PropertyRef Name="werkplaatsnr" />
+          </Key>
+          <Property Name="werkplaatsnr" Type="Int32" Nullable="false" />
+          <Property Name="naam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="onderhoud" Relationship="Self.onderhoud_werkplaats_fk" FromRole="werkplaats" ToRole="onderhoud" />
+        </EntityType>
+        <Association Name="auto_dealer_fk">
+          <End Role="dealer" Type="Self.dealer" Multiplicity="1" />
+          <End Role="auto" Type="Self.auto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dealer">
+              <PropertyRef Name="dealernr" />
+            </Principal>
+            <Dependent Role="auto">
+              <PropertyRef Name="DEALER_dealernr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="onderhoud_auto_fk">
+          <End Role="auto" Type="Self.auto" Multiplicity="1" />
+          <End Role="onderhoud" Type="Self.onderhoud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="auto">
+              <PropertyRef Name="kenteken" />
+            </Principal>
+            <Dependent Role="onderhoud">
+              <PropertyRef Name="auto_kenteken" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="onderhoud_werkplaats_fk">
+          <End Role="werkplaats" Type="Self.werkplaats" Multiplicity="1" />
+          <End Role="onderhoud" Type="Self.onderhoud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="werkplaats">
+              <PropertyRef Name="werkplaatsnr" />
+            </Principal>
+            <Dependent Role="onderhoud">
+              <PropertyRef Name="werkplaats_werkplaatsnr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AutoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="auto" EntityType="Self.auto" />
+          <EntitySet Name="dealer" EntityType="Self.dealer" />
+          <EntitySet Name="onderhoud" EntityType="Self.onderhoud" />
+          <EntitySet Name="werkplaats" EntityType="Self.werkplaats" />
+          <AssociationSet Name="auto_dealer_fk" Association="Self.auto_dealer_fk">
+            <End Role="dealer" EntitySet="dealer" />
+            <End Role="auto" EntitySet="auto" />
+          </AssociationSet>
+          <AssociationSet Name="onderhoud_auto_fk" Association="Self.onderhoud_auto_fk">
+            <End Role="auto" EntitySet="auto" />
+            <End Role="onderhoud" EntitySet="onderhoud" />
+          </AssociationSet>
+          <AssociationSet Name="onderhoud_werkplaats_fk" Association="Self.onderhoud_werkplaats_fk">
+            <End Role="werkplaats" EntitySet="werkplaats" />
+            <End Role="onderhoud" EntitySet="onderhoud" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AutoModelStoreContainer" CdmEntityContainer="AutoEntities">
+          <EntitySetMapping Name="auto">
+            <EntityTypeMapping TypeName="AutoModel.auto">
+              <MappingFragment StoreEntitySet="auto">
+                <ScalarProperty Name="kenteken" ColumnName="kenteken" />
+                <ScalarProperty Name="merk" ColumnName="merk" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="DEALER_dealernr" ColumnName="DEALER_dealernr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dealer">
+            <EntityTypeMapping TypeName="AutoModel.dealer">
+              <MappingFragment StoreEntitySet="dealer">
+                <ScalarProperty Name="dealernr" ColumnName="dealernr" />
+                <ScalarProperty Name="naam" ColumnName="naam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="onderhoud">
+            <EntityTypeMapping TypeName="AutoModel.onderhoud">
+              <MappingFragment StoreEntitySet="onderhoud">
+                <ScalarProperty Name="onderhoudsdatum" ColumnName="onderhoudsdatum" />
+                <ScalarProperty Name="kosten" ColumnName="kosten" />
+                <ScalarProperty Name="auto_kenteken" ColumnName="auto_kenteken" />
+                <ScalarProperty Name="werkplaats_werkplaatsnr" ColumnName="werkplaats_werkplaatsnr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="werkplaats">
+            <EntityTypeMapping TypeName="AutoModel.werkplaats">
+              <MappingFragment StoreEntitySet="werkplaats">
+                <ScalarProperty Name="werkplaatsnr" ColumnName="werkplaatsnr" />
+                <ScalarProperty Name="naam" ColumnName="naam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
