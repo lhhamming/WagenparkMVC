@@ -200,6 +200,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\autoesController.cs" />
+    <Compile Include="Controllers\DealerController.cs" />
     <Compile Include="Controllers\dealersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -324,11 +325,6 @@
     <Content Include="Views\autoes\Details.cshtml" />
     <Content Include="Views\autoes\Edit.cshtml" />
     <Content Include="Views\autoes\Index.cshtml" />
-    <Content Include="Views\dealers\Create.cshtml" />
-    <Content Include="Views\dealers\Delete.cshtml" />
-    <Content Include="Views\dealers\Details.cshtml" />
-    <Content Include="Views\dealers\Edit.cshtml" />
-    <Content Include="Views\dealers\Index.cshtml" />
     <Content Include="Views\onderhouds\Create.cshtml" />
     <Content Include="Views\onderhouds\Delete.cshtml" />
     <Content Include="Views\onderhouds\Details.cshtml" />
@@ -341,6 +337,8 @@
     <Content Include="Views\werkplaats\Index.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\DealerHomePage.cshtml" />
+    <Content Include="Views\Dealer\DealerPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
