@@ -200,7 +200,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\autoesController.cs" />
-    <Compile Include="Controllers\DealerController.cs" />
     <Compile Include="Controllers\dealersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -246,10 +245,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Login.css" />
+    <Content Include="Content\menu.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="IMG\bg.jpg" />
+    <Content Include="IMG\rocit.png" />
     <Content Include="Models\WagenparkModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WagenparkModel.edmx</DependentUpon>
@@ -325,6 +328,11 @@
     <Content Include="Views\autoes\Details.cshtml" />
     <Content Include="Views\autoes\Edit.cshtml" />
     <Content Include="Views\autoes\Index.cshtml" />
+    <Content Include="Views\dealers\Create.cshtml" />
+    <Content Include="Views\dealers\Delete.cshtml" />
+    <Content Include="Views\dealers\Details.cshtml" />
+    <Content Include="Views\dealers\Edit.cshtml" />
+    <Content Include="Views\dealers\Index.cshtml" />
     <Content Include="Views\onderhouds\Create.cshtml" />
     <Content Include="Views\onderhouds\Delete.cshtml" />
     <Content Include="Views\onderhouds\Details.cshtml" />
@@ -337,8 +345,7 @@
     <Content Include="Views\werkplaats\Index.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
-    <Content Include="Views\DealerHomePage.cshtml" />
-    <Content Include="Views\Dealer\DealerPage.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
