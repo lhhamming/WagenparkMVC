@@ -1,10 +1,10 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+	background-image: url("https://www.walldevil.com/wallpapers/w01/552917-abstract-curvilinear-design-illustrations-red-snapdragon-swirls-vectors.jpg")
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+	margin-top: 5%;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -22,3 +22,4 @@ select,
 textarea {
     max-width: 280px;
 }
+
