@@ -10,11 +10,11 @@ using WagenparkMVC.Models;
 
 namespace WagenparkMVC.Controllers
 {
-    public class werkplaatController : Controller
+    public class WerkplaatsController : Controller
     {
         private AutoEntities db = new AutoEntities();
 
-        // GET: werkplaat
+        // GET: werkplaats
         public ActionResult Index()
         {
             return View(db.werkplaat.ToList());

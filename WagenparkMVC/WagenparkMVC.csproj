@@ -217,7 +217,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\onderhoudsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
-    <Compile Include="Controllers\werkplaatsController.cs" />
+    <Compile Include="Controllers\WerkplaatsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -355,11 +355,11 @@
     <Content Include="Views\onderhouds\Details.cshtml" />
     <Content Include="Views\onderhouds\Edit.cshtml" />
     <Content Include="Views\onderhouds\Index.cshtml" />
-    <Content Include="Views\werkplaats\Create.cshtml" />
-    <Content Include="Views\werkplaats\Delete.cshtml" />
-    <Content Include="Views\werkplaats\Details.cshtml" />
-    <Content Include="Views\werkplaats\Edit.cshtml" />
-    <Content Include="Views\werkplaats\Index.cshtml" />
+    <Content Include="Views\Werkplaats\Create.cshtml" />
+    <Content Include="Views\Werkplaats\Delete.cshtml" />
+    <Content Include="Views\Werkplaats\Details.cshtml" />
+    <Content Include="Views\Werkplaats\Edit.cshtml" />
+    <Content Include="Views\Werkplaats\Index.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
