@@ -222,34 +222,37 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>AutoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\auto.cs">
-      <DependentUpon>WagenparkModel.tt</DependentUpon>
+      <DependentUpon>AutoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AutoModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AutoModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AutoModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\dealer.cs">
-      <DependentUpon>WagenparkModel.tt</DependentUpon>
+      <DependentUpon>AutoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\onderhoud.cs">
-      <DependentUpon>WagenparkModel.tt</DependentUpon>
+      <DependentUpon>AutoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\WagenparkModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WagenparkModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WagenparkModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WagenparkModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WagenparkModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WagenparkModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\werkplaats.cs">
-      <DependentUpon>WagenparkModel.tt</DependentUpon>
+    <Compile Include="Models\werkplaat.cs">
+      <DependentUpon>AutoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -265,15 +268,15 @@
     <Content Include="Content\Site.css" />
     <Content Include="IMG\bg.jpg" />
     <Content Include="IMG\rocit.png" />
-    <Content Include="Models\WagenparkModel.Context.tt">
+    <Content Include="Models\AutoModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WagenparkModel.edmx</DependentUpon>
-      <LastGenOutput>WagenparkModel.Context.cs</LastGenOutput>
+      <DependentUpon>AutoModel.edmx</DependentUpon>
+      <LastGenOutput>AutoModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\WagenparkModel.tt">
+    <Content Include="Models\AutoModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WagenparkModel.edmx</DependentUpon>
-      <LastGenOutput>WagenparkModel.cs</LastGenOutput>
+      <DependentUpon>AutoModel.edmx</DependentUpon>
+      <LastGenOutput>AutoModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -282,12 +285,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\WagenparkModel.edmx">
+    <EntityDeploy Include="Models\AutoModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WagenparkModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>AutoModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\WagenparkModel.edmx.diagram">
-      <DependentUpon>WagenparkModel.edmx</DependentUpon>
+    <Content Include="Models\AutoModel.edmx.diagram">
+      <DependentUpon>AutoModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

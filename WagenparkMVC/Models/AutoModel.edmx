@@ -4,7 +4,24 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AutoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AutoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
         <EntityType Name="auto">
           <Key>
             <PropertyRef Name="kenteken" />
@@ -12,7 +29,7 @@
           <Property Name="kenteken" Type="nchar" MaxLength="6" Nullable="false" />
           <Property Name="merk" Type="nvarchar" MaxLength="25" />
           <Property Name="Type" Type="nvarchar" MaxLength="25" />
-          <Property Name="DEALER_dealernr" Type="int" Nullable="false" />
+          <Property Name="DEALER_DealerNr" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="dealer">
           <Key>
@@ -46,7 +63,7 @@
               <PropertyRef Name="dealernr" />
             </Principal>
             <Dependent Role="auto">
-              <PropertyRef Name="DEALER_dealernr" />
+              <PropertyRef Name="DEALER_DealerNr" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -75,6 +92,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="AutoModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="auto" EntityType="Self.auto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dealer" EntityType="Self.dealer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="onderhoud" EntityType="Self.onderhoud" Schema="dbo" store:Type="Tables" />
@@ -97,6 +115,23 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AutoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityType Name="auto">
           <Key>
             <PropertyRef Name="kenteken" />
@@ -104,9 +139,9 @@
           <Property Name="kenteken" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="merk" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="DEALER_dealernr" Type="Int32" Nullable="false" />
+          <Property Name="DEALER_DealerNr" Type="Int32" Nullable="false" />
           <NavigationProperty Name="dealer" Relationship="Self.auto_dealer_fk" FromRole="auto" ToRole="dealer" />
-          <NavigationProperty Name="onderhoud" Relationship="Self.onderhoud_auto_fk" FromRole="auto" ToRole="onderhoud" />
+          <NavigationProperty Name="onderhouds" Relationship="Self.onderhoud_auto_fk" FromRole="auto" ToRole="onderhoud" />
         </EntityType>
         <EntityType Name="dealer">
           <Key>
@@ -114,7 +149,7 @@
           </Key>
           <Property Name="dealernr" Type="Int32" Nullable="false" />
           <Property Name="naam" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="auto" Relationship="Self.auto_dealer_fk" FromRole="dealer" ToRole="auto" />
+          <NavigationProperty Name="autoes" Relationship="Self.auto_dealer_fk" FromRole="dealer" ToRole="auto" />
         </EntityType>
         <EntityType Name="onderhoud">
           <Key>
@@ -126,15 +161,15 @@
           <Property Name="auto_kenteken" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="werkplaats_werkplaatsnr" Type="Int32" Nullable="false" />
           <NavigationProperty Name="auto" Relationship="Self.onderhoud_auto_fk" FromRole="onderhoud" ToRole="auto" />
-          <NavigationProperty Name="werkplaats" Relationship="Self.onderhoud_werkplaats_fk" FromRole="onderhoud" ToRole="werkplaats" />
+          <NavigationProperty Name="werkplaat" Relationship="Self.onderhoud_werkplaats_fk" FromRole="onderhoud" ToRole="werkplaats" />
         </EntityType>
-        <EntityType Name="werkplaats">
+        <EntityType Name="werkplaat">
           <Key>
             <PropertyRef Name="werkplaatsnr" />
           </Key>
           <Property Name="werkplaatsnr" Type="Int32" Nullable="false" />
           <Property Name="naam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="onderhoud" Relationship="Self.onderhoud_werkplaats_fk" FromRole="werkplaats" ToRole="onderhoud" />
+          <NavigationProperty Name="onderhouds" Relationship="Self.onderhoud_werkplaats_fk" FromRole="werkplaats" ToRole="onderhoud" />
         </EntityType>
         <Association Name="auto_dealer_fk">
           <End Role="dealer" Type="Self.dealer" Multiplicity="1" />
@@ -144,7 +179,7 @@
               <PropertyRef Name="dealernr" />
             </Principal>
             <Dependent Role="auto">
-              <PropertyRef Name="DEALER_dealernr" />
+              <PropertyRef Name="DEALER_DealerNr" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -161,7 +196,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="onderhoud_werkplaats_fk">
-          <End Role="werkplaats" Type="Self.werkplaats" Multiplicity="1" />
+          <End Role="werkplaats" Type="Self.werkplaat" Multiplicity="1" />
           <End Role="onderhoud" Type="Self.onderhoud" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="werkplaats">
@@ -173,21 +208,22 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="AutoEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="auto" EntityType="Self.auto" />
-          <EntitySet Name="dealer" EntityType="Self.dealer" />
-          <EntitySet Name="onderhoud" EntityType="Self.onderhoud" />
-          <EntitySet Name="werkplaats" EntityType="Self.werkplaats" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="autoes" EntityType="Self.auto" />
+          <EntitySet Name="dealers" EntityType="Self.dealer" />
+          <EntitySet Name="onderhouds" EntityType="Self.onderhoud" />
+          <EntitySet Name="werkplaats" EntityType="Self.werkplaat" />
           <AssociationSet Name="auto_dealer_fk" Association="Self.auto_dealer_fk">
-            <End Role="dealer" EntitySet="dealer" />
-            <End Role="auto" EntitySet="auto" />
+            <End Role="dealer" EntitySet="dealers" />
+            <End Role="auto" EntitySet="autoes" />
           </AssociationSet>
           <AssociationSet Name="onderhoud_auto_fk" Association="Self.onderhoud_auto_fk">
-            <End Role="auto" EntitySet="auto" />
-            <End Role="onderhoud" EntitySet="onderhoud" />
+            <End Role="auto" EntitySet="autoes" />
+            <End Role="onderhoud" EntitySet="onderhouds" />
           </AssociationSet>
           <AssociationSet Name="onderhoud_werkplaats_fk" Association="Self.onderhoud_werkplaats_fk">
             <End Role="werkplaats" EntitySet="werkplaats" />
-            <End Role="onderhoud" EntitySet="onderhoud" />
+            <End Role="onderhoud" EntitySet="onderhouds" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -196,17 +232,35 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="AutoModelStoreContainer" CdmEntityContainer="AutoEntities">
-          <EntitySetMapping Name="auto">
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="AutoModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="autoes">
             <EntityTypeMapping TypeName="AutoModel.auto">
               <MappingFragment StoreEntitySet="auto">
                 <ScalarProperty Name="kenteken" ColumnName="kenteken" />
                 <ScalarProperty Name="merk" ColumnName="merk" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="DEALER_dealernr" ColumnName="DEALER_dealernr" />
+                <ScalarProperty Name="DEALER_DealerNr" ColumnName="DEALER_DealerNr" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="dealer">
+          <EntitySetMapping Name="dealers">
             <EntityTypeMapping TypeName="AutoModel.dealer">
               <MappingFragment StoreEntitySet="dealer">
                 <ScalarProperty Name="dealernr" ColumnName="dealernr" />
@@ -214,7 +268,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="onderhoud">
+          <EntitySetMapping Name="onderhouds">
             <EntityTypeMapping TypeName="AutoModel.onderhoud">
               <MappingFragment StoreEntitySet="onderhoud">
                 <ScalarProperty Name="onderhoudsdatum" ColumnName="onderhoudsdatum" />
@@ -225,7 +279,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="werkplaats">
-            <EntityTypeMapping TypeName="AutoModel.werkplaats">
+            <EntityTypeMapping TypeName="AutoModel.werkplaat">
               <MappingFragment StoreEntitySet="werkplaats">
                 <ScalarProperty Name="werkplaatsnr" ColumnName="werkplaatsnr" />
                 <ScalarProperty Name="naam" ColumnName="naam" />
@@ -246,7 +300,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

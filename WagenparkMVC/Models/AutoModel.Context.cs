@@ -25,9 +25,10 @@ namespace WagenparkMVC.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<auto> auto { get; set; }
-        public virtual DbSet<dealer> dealer { get; set; }
-        public virtual DbSet<onderhoud> onderhoud { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<auto> autoes { get; set; }
+        public virtual DbSet<dealer> dealers { get; set; }
+        public virtual DbSet<onderhoud> onderhouds { get; set; }
         public virtual DbSet<werkplaats> werkplaats { get; set; }
     }
 }

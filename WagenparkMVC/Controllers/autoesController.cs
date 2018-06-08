@@ -57,7 +57,7 @@ namespace WagenparkMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DEALER_dealernr = new SelectList(db.dealer, "dealernr", "naam", auto.DEALER_dealernr);
+            ViewBag.DEALER_dealernr = new SelectList(db.dealer, "dealernr", "naam", auto.DEALER_DealerNr);
             return View(auto);
         }
 
@@ -73,7 +73,7 @@ namespace WagenparkMVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.DEALER_dealernr = new SelectList(db.dealer, "dealernr", "naam", auto.DEALER_dealernr);
+            ViewBag.DEALER_dealernr = new SelectList(db.dealer, "dealernr", "naam", auto.DEALER_DealerNr);
             return View(auto);
         }
 
@@ -90,7 +90,7 @@ namespace WagenparkMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DEALER_dealernr = new SelectList(db.dealer, "dealernr", "naam", auto.DEALER_dealernr);
+            ViewBag.DEALER_dealernr = new SelectList(db.dealer, "dealernr", "naam", auto.DEALER_DealerNr);
             return View(auto);
         }
 

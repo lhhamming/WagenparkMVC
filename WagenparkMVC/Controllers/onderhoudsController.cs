@@ -17,7 +17,7 @@ namespace WagenparkMVC.Controllers
         // GET: onderhouds
         public ActionResult Index()
         {
-            var onderhoud = db.onderhoud.Include(o => o.auto).Include(o => o.werkplaats);
+            var onderhoud = db.onderhoud.Include(o => o.auto).Include(o => o.werkplaat);
             return View(onderhoud.ToList());
         }
 

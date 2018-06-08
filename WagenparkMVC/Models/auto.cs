@@ -17,16 +17,16 @@ namespace WagenparkMVC.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public auto()
         {
-            this.onderhoud = new HashSet<onderhoud>();
+            this.onderhouds = new HashSet<onderhoud>();
         }
     
         public string kenteken { get; set; }
         public string merk { get; set; }
         public string Type { get; set; }
-        public int DEALER_dealernr { get; set; }
+        public int DEALER_DealerNr { get; set; }
     
         public virtual dealer dealer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<onderhoud> onderhoud { get; set; }
+        public virtual ICollection<onderhoud> onderhouds { get; set; }
     }
 }

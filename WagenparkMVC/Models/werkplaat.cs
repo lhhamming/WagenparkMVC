@@ -17,13 +17,13 @@ namespace WagenparkMVC.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public werkplaats()
         {
-            this.onderhoud = new HashSet<onderhoud>();
+            this.onderhouds = new HashSet<onderhoud>();
         }
     
         public int werkplaatsnr { get; set; }
         public string naam { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<onderhoud> onderhoud { get; set; }
+        public virtual ICollection<onderhoud> onderhouds { get; set; }
     }
 }
