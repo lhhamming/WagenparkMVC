@@ -114,8 +114,8 @@ namespace WagenparkMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            auto auto = db.auto.Find(id);
-            db.auto.Remove(auto);
+            auto auto = db.autoes.Find(id);
+            db.autoes.Remove(auto);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

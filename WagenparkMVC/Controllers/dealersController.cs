@@ -17,7 +17,7 @@ namespace WagenparkMVC.Controllers
         // GET: dealers
         public ActionResult Index()
         {
-            return View(db.dealer.ToList());
+            return View(db.dealers.ToList());
         }
 
         // GET: dealers/Details/5
@@ -27,7 +27,7 @@ namespace WagenparkMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            dealer dealer = db.dealer.Find(id);
+            dealer dealer = db.dealers.Find(id);
             if (dealer == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace WagenparkMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.dealer.Add(dealer);
+                db.dealers.Add(dealer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace WagenparkMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            dealer dealer = db.dealer.Find(id);
+            dealer dealer = db.dealers.Find(id);
             if (dealer == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace WagenparkMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            dealer dealer = db.dealer.Find(id);
+            dealer dealer = db.dealers.Find(id);
             if (dealer == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace WagenparkMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            dealer dealer = db.dealer.Find(id);
-            db.dealer.Remove(dealer);
+            dealer dealer = db.dealers.Find(id);
+            db.dealers.Remove(dealer);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
