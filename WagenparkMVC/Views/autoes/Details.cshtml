@@ -1,42 +1,37 @@
 ﻿@model WagenparkMVC.Models.auto
 
 @{
-    ViewBag.Title = "Details";
+	ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="center jumbotron">
+	<h3 class="layoutSettings">Auto Details</h3>
+	<dl>
+		<dt class="layoutSettings">
+			Merk
+		</dt>
 
-<div>
-    <h4>auto</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.merk)
-        </dt>
+		<dd class="layoutSettings">
+			@Html.DisplayFor(model => model.merk)
+		</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.merk)
-        </dd>
+		<dt class="layoutSettings">
+			Type
+		</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
+		<dd class="layoutSettings">
+			@Html.DisplayFor(model => model.Type)
+		</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Type)
-        </dd>
+		<dt class="layoutSettings">
+			Dealer
+		</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.dealer.naam)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.dealer.naam)
-        </dd>
-
-    </dl>
+		<dd class="layoutSettings">
+			@Html.DisplayFor(model => model.dealer.naam)
+		</dd>
+		<input class="layoutSettings" value="Edit" class="btn btn-info" onclick="location.href='@Url.Action("Edit", new { id = Model.kenteken })'" />
+		<input class="layoutSettings"value="Terug" class="btn btn-danger" onclick="location.href='@Url.Action("Index")'" />
+	</dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.kenteken }) |
-	@Html.ActionLink("Back to List", "Index")
-</p>
+@Styles.Render("~/Content/main.css")

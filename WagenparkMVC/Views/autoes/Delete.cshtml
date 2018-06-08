@@ -4,45 +4,38 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<div class="center jumbotron">
+	<dl class="dl-horizontal">
+		<h2 class="layoutSettings">Auto verwijderen</h2>
+		<dt class="layoutSettings">
+			Merk
+		</dt>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>auto</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.merk)
-        </dt>
+		<dd class="layoutSettings">
+			@Html.DisplayFor(model => model.merk)
+		</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.merk)
-        </dd>
+		<dt class="layoutSettings">
+			Type
+		</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
+		<dd class="layoutSettings">
+			@Html.DisplayFor(model => model.Type)
+		</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Type)
-        </dd>
+		<dt class="layoutSettings">
+			Dealer
+		</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.dealer.naam)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.dealer.naam)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-	        @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+		<dd class="layoutSettings">
+			@Html.DisplayFor(model => model.dealer.naam)
+		</dd>
+		<input type="submit" value="Delete" class="btn btn-info layoutSettings" />
+		<input value="Terug" class="btn btn-danger layoutSettings" onclick="location.href='@Url.Action("Index")'" />
+	</dl>
 </div>
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+	@Styles.Render("~/Content/main.css")
+	@Styles.Render("~/Content/menu.css")
+}

@@ -73,7 +73,7 @@ namespace WagenparkMVC.Controllers
                 return View(model);
             }
 
-            // This doesn't count login failures towards account lockout
+            // This doesn't count layoutSettings failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
@@ -96,7 +96,7 @@ namespace WagenparkMVC.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
-            // Require that the user has already logged in via username/password or external login
+            // Require that the user has already logged in via username/password or external layoutSettings
             if (!await SignInManager.HasBeenVerifiedAsync())
             {
                 return View("Error");
@@ -278,7 +278,7 @@ namespace WagenparkMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
-            // Request a redirect to the external login provider
+            // Request a redirect to the external layoutSettings provider
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
@@ -328,7 +328,7 @@ namespace WagenparkMVC.Controllers
                 return RedirectToAction("Login");
             }
 
-            // Sign in the user with this external login provider if the user already has a login
+            // Sign in the user with this external layoutSettings provider if the user already has a layoutSettings
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
             switch (result)
             {
@@ -361,7 +361,7 @@ namespace WagenparkMVC.Controllers
 
             if (ModelState.IsValid)
             {
-                // Get the information about the user from the external login provider
+                // Get the information about the user from the external layoutSettings provider
                 var info = await AuthenticationManager.GetExternalLoginInfoAsync();
                 if (info == null)
                 {

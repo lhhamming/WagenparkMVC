@@ -5,7 +5,7 @@
 	ViewBag.Title = "Log in";
 }
 
-<div class="center jumbotron">
+<div class="center jumbotron layoutSettings">
 	<div class="row">
 		<div>
 
@@ -13,25 +13,25 @@
 				@using (Html.BeginForm("Login", "Account", new {ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
 				{
 					@Html.AntiForgeryToken()
-					<h3 class="login">Log in</h3>
-					@Html.ValidationSummary(true, "", new {@class = "text-danger login"})
+					<h3>Log in</h3>
+					@Html.ValidationSummary(true, "", new {@class = "text-danger layoutSettings"})
 					<div>
-						@Html.LabelFor(m => m.UserName, new {@class = "login"})
-						<div>
-							@Html.TextBoxFor(m => m.UserName, new {@class = "form-control login"})
-							@Html.ValidationMessageFor(m => m.UserName, "", new {@class = "text-danger login"})
+						@Html.LabelFor(m => m.UserName)
+						<div> 
+							@Html.TextBoxFor(m => m.UserName, new {@class = "form-control layoutSettings" })
+							@Html.ValidationMessageFor(m => m.UserName, "", new {@class = "text-danger layoutSettings"})
 						</div>
 					</div>
 					<div>
-						@Html.LabelFor(m => m.Password, new {@class = "login"})
+						@Html.LabelFor(m => m.Password)
 						<div>
-							@Html.PasswordFor(m => m.Password, new {@class = "form-control login"})
-							@Html.ValidationMessageFor(m => m.Password, "", new {@class = "text-danger login"})
+							@Html.PasswordFor(m => m.Password, new {@class = "form-control layoutSettings"})
+							@Html.ValidationMessageFor(m => m.Password, "", new {@class = "text-danger layoutSettings"})
 						</div>
 					</div>
 					<div>
-						<div class="col-md-offset-2 col-md-10 login">
-							<input id="login" type="submit" value="Log in" class="btn btn-default"/>
+						<div>
+							<input id="login" type="submit" value="Log in" class="btn btn-success"/>
 						</div>
 					</div>
 					@* Enable this once you have account confirmation enabled for password reset functionality
@@ -46,5 +46,5 @@
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
-	@Styles.Render("~/Content/Login.css")
+	@Styles.Render("~/Content/main.css")
 }

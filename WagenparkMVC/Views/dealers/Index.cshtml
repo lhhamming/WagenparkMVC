@@ -5,19 +5,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<p>
-	@if (User.IsInRole("Admin"))
-	{
-		@Html.ActionLink("Create New", "Create")
-	}
-</p>
-<table class="table center login jumbotron">
+<table class="table center layoutSettings jumbotron">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.naam)
+            Dealers
         </th>
-        <th></th>
+	    <th>
+		    @if (User.IsInRole("Admin"))
+		    {
+			    @Html.ActionLink("Create New", "Create")
+		    }
+	    </th>
     </tr>
 
 @foreach (var item in Model) {

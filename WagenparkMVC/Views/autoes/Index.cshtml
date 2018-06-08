@@ -4,26 +4,23 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-	@if (User.IsInRole("Admin"))
-	{
-		@Html.ActionLink("Create New", "Create")
-	}
-</p>
-<table class="table center login jumbotron">
+<table class="table jumbotron">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.merk)
+            Merk
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Type)
+            Type
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.dealer.naam)
+            Naam
         </th>
-        <th></th>
+	    <th>
+		    @if (User.IsInRole("Admin"))
+		    {
+			    @Html.ActionLink("Create New", "Create")
+		    }
+	    </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -40,8 +37,10 @@
 		<td>
 			@if (User.IsInRole("Admin"))
 			{
-				@Html.ActionLink("Edit | ", "Edit", new { id = item.kenteken })
-				@Html.ActionLink("Details | ", "Details", new { id = item.kenteken })
+				@Html.ActionLink("Edit", "Edit", new { id = item.kenteken })
+				<br/>
+				@Html.ActionLink("Details", "Details", new { id = item.kenteken })
+				<br/>
 				@Html.ActionLink("Delete", "Delete", new { id = item.kenteken })
 			}
 			else
@@ -53,3 +52,8 @@
 }
 
 </table>
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+	@Styles.Render("~/Content/main.css")
+	@Styles.Render("~/Content/menu.css")
+}
