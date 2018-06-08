@@ -17,7 +17,7 @@ namespace WagenparkMVC.Controllers
         // GET: autoes
         public ActionResult Index()
         {
-            var auto = db.auto.Include(a => a.dealer);
+            var auto = db.autoes.Include(a => a.dealer);
             return View(auto.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace WagenparkMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            auto auto = db.auto.Find(id);
+            auto auto = db.autoes.Find(id);
             if (auto == null)
             {
                 return HttpNotFound();
@@ -39,7 +39,7 @@ namespace WagenparkMVC.Controllers
         // GET: autoes/Create
         public ActionResult Create()
         {
-            ViewBag.DEALER_dealernr = new SelectList(db.dealer, "dealernr", "naam");
+            ViewBag.DEALER_dealernr = new SelectList(db.dealers, "dealernr", "naam");
             return View();
         }
 
@@ -52,12 +52,12 @@ namespace WagenparkMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.auto.Add(auto);
+                db.autoes.Add(auto);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DEALER_dealernr = new SelectList(db.dealer, "dealernr", "naam", auto.DEALER_DealerNr);
+            ViewBag.DEALER_dealernr = new SelectList(db.dealers, "dealernr", "naam", auto.DEALER_DealerNr);
             return View(auto);
         }
 
@@ -68,12 +68,12 @@ namespace WagenparkMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            auto auto = db.auto.Find(id);
+            auto auto = db.autoes.Find(id);
             if (auto == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.DEALER_dealernr = new SelectList(db.dealer, "dealernr", "naam", auto.DEALER_DealerNr);
+            ViewBag.DEALER_dealernr = new SelectList(db.dealers, "dealernr", "naam", auto.DEALER_DealerNr);
             return View(auto);
         }
 
@@ -90,7 +90,7 @@ namespace WagenparkMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DEALER_dealernr = new SelectList(db.dealer, "dealernr", "naam", auto.DEALER_DealerNr);
+            ViewBag.DEALER_dealernr = new SelectList(db.dealers, "dealernr", "naam", auto.DEALER_DealerNr);
             return View(auto);
         }
 
@@ -101,7 +101,7 @@ namespace WagenparkMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            auto auto = db.auto.Find(id);
+            auto auto = db.autoes.Find(id);
             if (auto == null)
             {
                 return HttpNotFound();
