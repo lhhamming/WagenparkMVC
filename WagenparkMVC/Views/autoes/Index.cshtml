@@ -7,9 +7,12 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+	@if (User.IsInRole("Admin"))
+	{
+		@Html.ActionLink("Create New", "Create")
+	}
 </p>
-<table class="table">
+<table class="table center login jumbotron">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.merk)
@@ -34,11 +37,18 @@
         <td>
             @Html.DisplayFor(modelItem => item.dealer.naam)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.kenteken }) |
-            @Html.ActionLink("Details", "Details", new { id=item.kenteken }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.kenteken })
-        </td>
+		<td>
+			@if (User.IsInRole("Admin"))
+			{
+				@Html.ActionLink("Edit | ", "Edit", new { id = item.kenteken })
+				@Html.ActionLink("Details | ", "Details", new { id = item.kenteken })
+				@Html.ActionLink("Delete", "Delete", new { id = item.kenteken })
+			}
+			else
+			{
+				@Html.ActionLink("Details", "Details", new { id = item.kenteken })
+			}
+		</td>
     </tr>
 }
 

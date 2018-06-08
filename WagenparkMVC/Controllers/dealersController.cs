@@ -10,6 +10,7 @@ using WagenparkMVC.Models;
 
 namespace WagenparkMVC.Controllers
 {
+    [Authorize]
     public class dealersController : Controller
     {
         private AutoEntities db = new AutoEntities();

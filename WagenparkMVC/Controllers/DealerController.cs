@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace WagenparkMVC.Controllers
 {
+    [Authorize]
     public class DealerController : Controller
     {
         // GET: Dealer
