@@ -17,7 +17,7 @@ namespace WagenparkMVC.Controllers
         // GET: onderhouds
         public ActionResult Index()
         {
-            var onderhoud = db.onderhoud.Include(o => o.auto).Include(o => o.werkplaat);
+            var onderhoud = db.onderhouds.Include(o => o.auto).Include(o => o.werkplaats);
             return View(onderhoud.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace WagenparkMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            onderhoud onderhoud = db.onderhoud.Find(id);
+            onderhoud onderhoud = db.onderhouds.Find(id);
             if (onderhoud == null)
             {
                 return HttpNotFound();
@@ -39,7 +39,7 @@ namespace WagenparkMVC.Controllers
         // GET: onderhouds/Create
         public ActionResult Create()
         {
-            ViewBag.auto_kenteken = new SelectList(db.auto, "kenteken", "merk");
+            ViewBag.auto_kenteken = new SelectList(db.autoes, "kenteken", "merk");
             ViewBag.werkplaats_werkplaatsnr = new SelectList(db.werkplaats, "werkplaatsnr", "naam");
             return View();
         }
@@ -53,12 +53,12 @@ namespace WagenparkMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.onderhoud.Add(onderhoud);
+                db.onderhouds.Add(onderhoud);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.auto_kenteken = new SelectList(db.auto, "kenteken", "merk", onderhoud.auto_kenteken);
+            ViewBag.auto_kenteken = new SelectList(db.autoes, "kenteken", "merk", onderhoud.auto_kenteken);
             ViewBag.werkplaats_werkplaatsnr = new SelectList(db.werkplaats, "werkplaatsnr", "naam", onderhoud.werkplaats_werkplaatsnr);
             return View(onderhoud);
         }
@@ -70,12 +70,12 @@ namespace WagenparkMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            onderhoud onderhoud = db.onderhoud.Find(id);
+            onderhoud onderhoud = db.onderhouds.Find(id);
             if (onderhoud == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.auto_kenteken = new SelectList(db.auto, "kenteken", "merk", onderhoud.auto_kenteken);
+            ViewBag.auto_kenteken = new SelectList(db.autoes, "kenteken", "merk", onderhoud.auto_kenteken);
             ViewBag.werkplaats_werkplaatsnr = new SelectList(db.werkplaats, "werkplaatsnr", "naam", onderhoud.werkplaats_werkplaatsnr);
             return View(onderhoud);
         }
@@ -93,7 +93,7 @@ namespace WagenparkMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.auto_kenteken = new SelectList(db.auto, "kenteken", "merk", onderhoud.auto_kenteken);
+            ViewBag.auto_kenteken = new SelectList(db.autoes, "kenteken", "merk", onderhoud.auto_kenteken);
             ViewBag.werkplaats_werkplaatsnr = new SelectList(db.werkplaats, "werkplaatsnr", "naam", onderhoud.werkplaats_werkplaatsnr);
             return View(onderhoud);
         }
@@ -105,7 +105,7 @@ namespace WagenparkMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            onderhoud onderhoud = db.onderhoud.Find(id);
+            onderhoud onderhoud = db.onderhouds.Find(id);
             if (onderhoud == null)
             {
                 return HttpNotFound();
@@ -118,8 +118,8 @@ namespace WagenparkMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(DateTime id)
         {
-            onderhoud onderhoud = db.onderhoud.Find(id);
-            db.onderhoud.Remove(onderhoud);
+            onderhoud onderhoud = db.onderhouds.Find(id);
+            db.onderhouds.Remove(onderhoud);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
