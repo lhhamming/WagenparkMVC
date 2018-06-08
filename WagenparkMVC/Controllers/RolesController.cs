@@ -156,7 +156,6 @@ namespace WagenparkMVC.Controllers
                 var userlist = context.Users.OrderBy(u => u.UserName).ToList().Select(uu =>
                 new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
                 ViewBag.Users = userlist;
-                ViewBag.Message = "Roles retrieved successfully !";
             }
 
             return View("Index");
