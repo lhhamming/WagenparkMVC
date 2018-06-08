@@ -12,10 +12,10 @@ namespace WagenparkMVC.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class werkplaats
+    public partial class werkplaat
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public werkplaats()
+        public werkplaat()
         {
             this.onderhouds = new HashSet<onderhoud>();
         }

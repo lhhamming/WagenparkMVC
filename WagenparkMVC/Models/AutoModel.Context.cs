@@ -29,6 +29,6 @@ namespace WagenparkMVC.Models
         public virtual DbSet<auto> autoes { get; set; }
         public virtual DbSet<dealer> dealers { get; set; }
         public virtual DbSet<onderhoud> onderhouds { get; set; }
-        public virtual DbSet<werkplaats> werkplaats { get; set; }
+        public virtual DbSet<werkplaat> werkplaat { get; set; }
     }
 }

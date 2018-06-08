@@ -20,6 +20,6 @@ namespace WagenparkMVC.Models
         public int werkplaats_werkplaatsnr { get; set; }
     
         public virtual auto auto { get; set; }
-        public virtual werkplaats werkplaats { get; set; }
+        public virtual werkplaat werkplaat { get; set; }
     }
 }

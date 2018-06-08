@@ -17,7 +17,7 @@ namespace WagenparkMVC.Controllers
         // GET: onderhouds
         public ActionResult Index()
         {
-            var onderhoud = db.onderhouds.Include(o => o.auto).Include(o => o.werkplaats);
+            var onderhoud = db.onderhouds.Include(o => o.auto).Include(o => o.werkplaat);
             return View(onderhoud.ToList());
         }
 
@@ -40,7 +40,7 @@ namespace WagenparkMVC.Controllers
         public ActionResult Create()
         {
             ViewBag.auto_kenteken = new SelectList(db.autoes, "kenteken", "merk");
-            ViewBag.werkplaats_werkplaatsnr = new SelectList(db.werkplaats, "werkplaatsnr", "naam");
+            ViewBag.werkplaat_werkplaatnr = new SelectList(db.werkplaat, "werkplaatnr", "naam");
             return View();
         }
 
@@ -49,7 +49,7 @@ namespace WagenparkMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "onderhoudsdatum,kosten,auto_kenteken,werkplaats_werkplaatsnr")] onderhoud onderhoud)
+        public ActionResult Create([Bind(Include = "onderhoudsdatum,kosten,auto_kenteken,werkplaat_werkplaatnr")] onderhoud onderhoud)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +59,7 @@ namespace WagenparkMVC.Controllers
             }
 
             ViewBag.auto_kenteken = new SelectList(db.autoes, "kenteken", "merk", onderhoud.auto_kenteken);
-            ViewBag.werkplaats_werkplaatsnr = new SelectList(db.werkplaats, "werkplaatsnr", "naam", onderhoud.werkplaats_werkplaatsnr);
+            ViewBag.werkplaat_werkplaatnr = new SelectList(db.werkplaat, "werkplaatnr", "naam", onderhoud.werkplaats_werkplaatsnr);
             return View(onderhoud);
         }
 
@@ -76,7 +76,7 @@ namespace WagenparkMVC.Controllers
                 return HttpNotFound();
             }
             ViewBag.auto_kenteken = new SelectList(db.autoes, "kenteken", "merk", onderhoud.auto_kenteken);
-            ViewBag.werkplaats_werkplaatsnr = new SelectList(db.werkplaats, "werkplaatsnr", "naam", onderhoud.werkplaats_werkplaatsnr);
+            ViewBag.werkplaat_werkplaatnr = new SelectList(db.werkplaat, "werkplaatnr", "naam", onderhoud.werkplaats_werkplaatsnr);
             return View(onderhoud);
         }
 
@@ -85,7 +85,7 @@ namespace WagenparkMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "onderhoudsdatum,kosten,auto_kenteken,werkplaats_werkplaatsnr")] onderhoud onderhoud)
+        public ActionResult Edit([Bind(Include = "onderhoudsdatum,kosten,auto_kenteken,werkplaat_werkplaatnr")] onderhoud onderhoud)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace WagenparkMVC.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.auto_kenteken = new SelectList(db.autoes, "kenteken", "merk", onderhoud.auto_kenteken);
-            ViewBag.werkplaats_werkplaatsnr = new SelectList(db.werkplaats, "werkplaatsnr", "naam", onderhoud.werkplaats_werkplaatsnr);
+            ViewBag.werkplaat_werkplaatnr = new SelectList(db.werkplaat, "werkplaatnr", "naam", onderhoud.werkplaats_werkplaatsnr);
             return View(onderhoud);
         }
 
