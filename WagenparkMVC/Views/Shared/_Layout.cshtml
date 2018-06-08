@@ -3,10 +3,10 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>@ViewBag.Title - My ASP.NET Application</title>
+	<title>@ViewBag.Title</title>
 	@Styles.Render("~/Content/css")
 	@Scripts.Render("~/bundles/modernizr")
-	@Styles.Render("~/Content/Login")
+	@Styles.Render("~/Content/main")
 
 </head>
 <body>
@@ -26,8 +26,8 @@
 				<ul class="nav navbar-nav">
 					<li>@Html.ActionLink("Home", "Index", "Home")</li>
 					<li>@Html.ActionLink("Role Manager", "Index", "Roles")</li>
-					<li>@Html.ActionLink("Dealers", "../dealers", "Index")</li>
-					<li>@Html.ActionLink("Auto's", "../autoes", "Index")</li>
+					<li>@Html.ActionLink("Dealers", "Index", "dealers")</li>
+					<li>@Html.ActionLink("Auto's", "Index", "autoes")</li>
 					<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
 				</ul>
 				@Html.Partial("_LoginPartial")
