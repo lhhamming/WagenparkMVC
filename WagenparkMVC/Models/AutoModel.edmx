@@ -52,7 +52,7 @@
           <Key>
             <PropertyRef Name="werkplaatsnr" />
           </Key>
-          <Property Name="werkplaatsnr" Type="int" Nullable="false" />
+          <Property Name="werkplaatsnr" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="naam" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="auto_dealer_fk">
@@ -167,7 +167,7 @@
           <Key>
             <PropertyRef Name="werkplaatsnr" />
           </Key>
-          <Property Name="werkplaatsnr" Type="Int32" Nullable="false" />
+          <Property Name="werkplaatsnr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="naam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="onderhouds" Relationship="Self.onderhoud_werkplaats_fk" FromRole="werkplaats" ToRole="onderhoud" />
         </EntityType>

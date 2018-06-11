@@ -14,6 +14,9 @@
         <th>
             @Html.DisplayNameFor(model => model.naam)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.werkplaatsnr)
+        </th>
         <th></th>
     </tr>
 
@@ -21,6 +24,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.werkplaatsnr)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.werkplaatsnr }) |

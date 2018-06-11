@@ -19,7 +19,7 @@ namespace WagenparkMVC.Models
         {
             this.autoes = new HashSet<auto>();
         }
-        
+    
         public int dealernr { get; set; }
         public string naam { get; set; }
     
