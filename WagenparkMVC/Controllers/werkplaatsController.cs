@@ -17,6 +17,7 @@ namespace WagenparkMVC.Controllers
         // GET: werkplaats
         public ActionResult Index()
         {
+            
             return View(db.werkplaats.ToList());
         }
 

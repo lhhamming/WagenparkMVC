@@ -10,6 +10,9 @@
         <th>
             Dealers
         </th>
+        <th>
+            Dealer ID
+        </th>
 	    <th>
 		    @if (User.IsInRole("Admin"))
 		    {
@@ -22,6 +25,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dealernr)
         </td>
 		<td>
 			@if (User.IsInRole("Admin"))
