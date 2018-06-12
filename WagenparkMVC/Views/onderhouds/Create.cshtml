@@ -1,66 +1,75 @@
 ﻿@model WagenparkMVC.Models.onderhoud
 
 @{
-    ViewBag.Title = "Create";
+	ViewBag.Title = "Create";
 }
 
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>onderhoud</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.onderhoudsdatum, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.onderhoudsdatum, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.onderhoudsdatum, "", new { @class = "text-danger" })
-        </div>
-    </div>
+	@Html.AntiForgeryToken()
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.kosten, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.kosten, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.kosten, "", new { @class = "text-danger" })
-        </div>
-    </div>
+	<div class="form-horizontal">
+		<h4>onderhoud</h4>
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.onderhoudsdatum, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.onderhoudsdatum, new { htmlAttributes = new { @class = "form-control datepicker" } })
+				@Html.ValidationMessageFor(model => model.onderhoudsdatum, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.auto_kenteken, "auto_kenteken", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("auto_kenteken", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.auto_kenteken, "", new { @class = "text-danger" })
-        </div>
-    </div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.kosten, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.kosten, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.kosten, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.werkplaats_werkplaatsnr, "Werkplaats nummer", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("werkplaat_werkplaatnr", null , htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.werkplaats_werkplaatsnr, "", new { @class = "text-danger" })
-        </div>
-    </div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.auto_kenteken, "auto_kenteken", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.DropDownList("auto_kenteken", null, htmlAttributes: new { @class = "form-control" })
+				@Html.ValidationMessageFor(model => model.auto_kenteken, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.werkplaats_werkplaatsnr, "Werkplaats nummer", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.DropDownList("werkplaat_werkplaatnr", null, htmlAttributes: new { @class = "form-control" })
+				@Html.ValidationMessageFor(model => model.werkplaats_werkplaatsnr, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
 
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Create" class="btn btn-default" />
+			</div>
+		</div>
+	</div>
+	<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+	<script>
+		$(function () {
+			$(".datepicker").datepicker();
+
+		});
+	</script>
+
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+	@Scripts.Render("~/bundles/jqueryval")
+	<script src="~/Scripts/jquery-ui.min.js"></script>
 }
