@@ -17,7 +17,8 @@ namespace WagenparkMVC.Controllers
         // GET: werkplaats
         public ActionResult Index()
         {
-            return View(db.werkplaat.ToList());
+            
+            return View(db.werkplaats.ToList());
         }
 
         // GET: werkplaat/Details/5
@@ -27,7 +28,7 @@ namespace WagenparkMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            werkplaat werkplaat = db.werkplaat.Find(id);
+            werkplaat werkplaat = db.werkplaats.Find(id);
             if (werkplaat == null)
             {
                 return HttpNotFound();
@@ -50,7 +51,7 @@ namespace WagenparkMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.werkplaat.Add(werkplaat);
+                db.werkplaats.Add(werkplaat);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +66,7 @@ namespace WagenparkMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            werkplaat werkplaat = db.werkplaat.Find(id);
+            werkplaat werkplaat = db.werkplaats.Find(id);
             if (werkplaat == null)
             {
                 return HttpNotFound();
@@ -96,7 +97,7 @@ namespace WagenparkMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            werkplaat werkplaat = db.werkplaat.Find(id);
+            werkplaat werkplaat = db.werkplaats.Find(id);
             if (werkplaat == null)
             {
                 return HttpNotFound();
@@ -109,8 +110,8 @@ namespace WagenparkMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            werkplaat werkplaat = db.werkplaat.Find(id);
-            db.werkplaat.Remove(werkplaat);
+            werkplaat werkplaat = db.werkplaats.Find(id);
+            db.werkplaats.Remove(werkplaat);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

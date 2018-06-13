@@ -40,7 +40,7 @@ namespace WagenparkMVC.Controllers
         public ActionResult Create()
         {
             ViewBag.auto_kenteken = new SelectList(db.autoes, "kenteken", "merk");
-            ViewBag.werkplaat_werkplaatnr = new SelectList(db.werkplaat, "werkplaatnr", "naam");
+            ViewBag.werkplaat_werkplaatnr = new SelectList(db.werkplaats, "werkplaatsnr", "naam");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace WagenparkMVC.Controllers
             }
 
             ViewBag.auto_kenteken = new SelectList(db.autoes, "kenteken", "merk", onderhoud.auto_kenteken);
-            ViewBag.werkplaat_werkplaatnr = new SelectList(db.werkplaat, "werkplaatnr", "naam", onderhoud.werkplaats_werkplaatsnr);
+            ViewBag.werkplaat_werkplaatnr = new SelectList(db.werkplaats, "werkplaatsnr", "naam", onderhoud.werkplaats_werkplaatsnr);
             return View(onderhoud);
         }
 
@@ -76,7 +76,7 @@ namespace WagenparkMVC.Controllers
                 return HttpNotFound();
             }
             ViewBag.auto_kenteken = new SelectList(db.autoes, "kenteken", "merk", onderhoud.auto_kenteken);
-            ViewBag.werkplaat_werkplaatnr = new SelectList(db.werkplaat, "werkplaatnr", "naam", onderhoud.werkplaats_werkplaatsnr);
+            ViewBag.werkplaat_werkplaatnr = new SelectList(db.werkplaats, "werkplaatnr", "naam", onderhoud.werkplaats_werkplaatsnr);
             return View(onderhoud);
         }
 
@@ -94,7 +94,7 @@ namespace WagenparkMVC.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.auto_kenteken = new SelectList(db.autoes, "kenteken", "merk", onderhoud.auto_kenteken);
-            ViewBag.werkplaat_werkplaatnr = new SelectList(db.werkplaat, "werkplaatnr", "naam", onderhoud.werkplaats_werkplaatsnr);
+            ViewBag.werkplaat_werkplaatnr = new SelectList(db.werkplaats, "werkplaatnr", "naam", onderhoud.werkplaats_werkplaatsnr);
             return View(onderhoud);
         }
 

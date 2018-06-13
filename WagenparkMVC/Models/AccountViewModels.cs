@@ -63,6 +63,11 @@ namespace WagenparkMVC.Models
 
     public class RegisterViewModel
     {
+
+        [Required]
+        [Display(Name = "Dealer ID")]
+        public string DealerID { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

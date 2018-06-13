@@ -6,40 +6,46 @@
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
 	<div class="center jumbotron layoutSettings">
-		<div class="row">
-			@Html.AntiForgeryToken()
-			<h3>Register</h3>
-			@Html.ValidationSummary("", new { @class = "text-danger layoutSettings" })
-			<div>
-				@Html.LabelFor(m => m.Email, new { @class = "" })
-				<div>
-					@Html.TextBoxFor(m => m.Email, new { @class = "form-control layoutSettings" })
-				</div>
-			</div>
-			<div>
-				@Html.LabelFor(m => m.UserName)
-				<div>
-					@Html.TextBoxFor(m => m.UserName, new { @class = "form-control layoutSettings" })
-				</div>
-			</div>
-			<div>
-				@Html.LabelFor(m => m.Password)
-				<div>
-					@Html.PasswordFor(m => m.Password, new { @class = "form-control layoutSettings" })
-				</div>
-			</div>
-			<div>
-				@Html.LabelFor(m => m.ConfirmPassword)
-				<div>
-					@Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control layoutSettings" })
-				</div>
-			</div>
-			<div>
-				<div class="layoutSettings">
-					<input type="submit" class="btn btn-success" value="Register" />
-				</div>
-			</div>
-		</div>
+        <div class="row">
+            @Html.AntiForgeryToken()
+            <h3>Register</h3>
+            @Html.ValidationSummary("", new { @class = "text-danger layoutSettings" })
+            <div>
+                @Html.LabelFor(m => m.DealerID, new { @class = "" })
+                <div>
+                    @Html.EditorFor(model => model.DealerID, new { htmlAttributes = new { @class = "form-form-control layoutSettings", InputType = "number" } })
+                </div>
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Email, new { @class = "" })
+                <div>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control layoutSettings" })
+                </div>
+            </div>
+            <div>
+                @Html.LabelFor(m => m.UserName)
+                <div>
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control layoutSettings" })
+                </div>
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Password)
+                <div>
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control layoutSettings" })
+                </div>
+            </div>
+            <div>
+                @Html.LabelFor(m => m.ConfirmPassword)
+                <div>
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control layoutSettings" })
+                </div>
+            </div>
+            <div>
+                <div class="layoutSettings">
+                    <input type="submit" class="btn btn-success" value="Register" />
+                </div>
+            </div>
+        </div>
 	</div>
 }
 
