@@ -13,7 +13,7 @@
             <div>
                 @Html.LabelFor(m => m.DealerID, new { @class = "" })
                 <div>
-                    @Html.EditorFor(model => model.DealerID, new { htmlAttributes = new { @class = "form-form-control layoutSettings", InputType = "number" } })
+                    @Html.EditorFor(m => m.DealerID, new { htmlAttributes = new { @type = "number", @min = "0", @step = "1", @value = "0" , @class = "form-control layoutSettings" } })
                 </div>
             </div>
             <div>
