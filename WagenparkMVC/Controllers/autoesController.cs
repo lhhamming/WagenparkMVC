@@ -18,6 +18,16 @@ namespace WagenparkMVC.Controllers
         // GET: autoes
         public ActionResult Index()
         {
+            if (User.IsInRole("Bosmans"))
+            {
+                var BosmansAuto = db.autoes.Include(d => d.dealer).Where(u => u.DEALER_DealerNr == 1);
+                return View(BosmansAuto.ToList());
+            }
+            if (User.IsInRole("Vroegop"))
+            {
+                var VroegopAuto = db.autoes.Include(d => d.dealer).Where(u => u.DEALER_DealerNr == 2);
+                return View(VroegopAuto.ToList());
+            }
             var auto = db.autoes.Include(a => a.dealer);
             return View(auto.ToList());
         }
@@ -40,6 +50,16 @@ namespace WagenparkMVC.Controllers
         // GET: autoes/Create
         public ActionResult Create()
         {
+            if (User.IsInRole("Bosmans"))
+            {
+                ViewBag.DEALER_dealernr = new SelectList(db.dealers.Where(u => u.dealernr == 1), "dealernr", "naam");
+                return View();
+            }
+            if (User.IsInRole("Vroegop"))
+            {
+                ViewBag.DEALER_dealernr = new SelectList(db.dealers.Where(u => u.dealernr == 2), "dealernr", "naam");
+                return View();
+            }
             ViewBag.DEALER_dealernr = new SelectList(db.dealers, "dealernr", "naam");
             return View();
         }
