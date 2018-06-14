@@ -36,9 +36,10 @@
 		else
 		{
 			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li>@Html.ActionLink("Home", "Index", "Home")</li>
-				</ul>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Auto's", "../autoes", "Index")</li>
+                </ul>
 				@Html.Partial("_LoginPartial")
 			</div>
 		}

@@ -65,10 +65,6 @@ namespace WagenparkMVC.Models
     {
 
         [Required]
-        [Display(Name = "Dealer ID")]
-        public string DealerID { get; set; }
-
-        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
