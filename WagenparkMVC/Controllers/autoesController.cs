@@ -73,8 +73,16 @@ namespace WagenparkMVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                try
+                {
                 db.autoes.Add(auto);
                 db.SaveChanges();
+                }
+                catch(Exception ex)
+                {
+                    TempData["msg"] = "<script>alert('Het kenteken is onjuist!');</script>";
+                    return RedirectToAction("Index");
+                }
                 return RedirectToAction("Index");
             }
 

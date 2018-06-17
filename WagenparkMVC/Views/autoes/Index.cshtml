@@ -4,6 +4,8 @@
     ViewBag.Title = "Index";
 }
 
+@Html.Raw(TempData["msg"])
+
 <table class="table jumbotron">
     <tr>
         <th>
@@ -18,39 +20,46 @@
         <th>
             Dealer ID
         </th>
-	    <th>
-	        @Html.ActionLink("Create New", "Create")
-	    </th>
+        <th>
+            @Html.ActionLink("Create New", "Create")
+        </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.merk)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dealer.naam)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DEALER_DealerNr)
-        </td>
-		<td>
-			@if (User.IsInRole("Admin"))
-			{
-				@Html.ActionLink("Edit", "Edit", new { id = item.kenteken })
-				<br/>
-				@Html.ActionLink("Delete", "Delete", new { id = item.kenteken })
-			}
-		</td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.merk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dealer.naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DEALER_DealerNr)
+            </td>
+            <td>
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.kenteken })
+                    <br />
+                    @Html.ActionLink("Details", "Details", new { id = item.kenteken })
+                    <br />
+                    @Html.ActionLink("Delete", "Delete", new { id = item.kenteken })
+                }
+                else
+                {
+                    @Html.ActionLink("Details", "Details", new { id = item.kenteken })
+                }
+            </td>
+        </tr>
+    }
 
 </table>
 @section Scripts {
-	@Scripts.Render("~/bundles/jqueryval")
-	@Styles.Render("~/Content/main.css")
-	@Styles.Render("~/Content/menu.css")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/Content/main.css")
+    @Styles.Render("~/Content/menu.css")
 }
