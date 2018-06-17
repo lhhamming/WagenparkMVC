@@ -31,17 +31,11 @@
         </td>
 		<td>
 			@if (User.IsInRole("Admin"))
-		{
+			{
 		@Html.ActionLink("Edit", "Edit", new { id = item.dealernr })
 				<br />
 		@Html.ActionLink("Delete", "Delete", new { id = item.dealernr })
-					<br />
-		@Html.ActionLink("Details", "Details", new { id = item.dealernr })
-		}
-		else
-		{
-		@Html.ActionLink("Details", "Details", new { id = item.dealernr })
-}
+			}
 		</td>
     </tr>
 }

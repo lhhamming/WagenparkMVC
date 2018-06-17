@@ -294,6 +294,7 @@
     <Content Include="Models\AutoModel.edmx.diagram">
       <DependentUpon>AutoModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\WagenparkMVC20180614110235 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -365,7 +366,6 @@
     <Content Include="Views\Werkplaats\Index.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
-    <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Dealer\DealerPage.cshtml" />
   </ItemGroup>
   <ItemGroup>

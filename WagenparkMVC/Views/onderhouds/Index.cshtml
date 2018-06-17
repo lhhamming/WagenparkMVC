@@ -1,26 +1,26 @@
 ﻿@model IEnumerable<WagenparkMVC.Models.onderhoud>
 
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="table center layoutSettings jumbotron">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.kosten)
+            Kosten
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.auto.merk)
+            Merk
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.werkplaat.naam)
+            Werkplaats
         </th>
-        <th></th>
+		<th>
+			@if (User.IsInRole("Admin"))
+			{
+			@Html.ActionLink("Create New", "Create")
+			}
+		</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -34,11 +34,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.werkplaat.naam)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
+		<td>
+			@if (User.IsInRole("Admin"))
+			{	
+			@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+			<br />
+			@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+			}
+		</td>
     </tr>
 }
 
