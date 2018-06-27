@@ -4,13 +4,15 @@
 	ViewBag.Title = "Index";
 }
 
+@Html.Raw(TempData["msg"])
+
 <table class="table center layoutSettings jumbotron">
     <tr>
         <th>
             Kosten
         </th>
         <th>
-            Merk
+            Kenteken
         </th>
         <th>
             Werkplaats
@@ -29,7 +31,7 @@
             @Html.DisplayFor(modelItem => item.kosten)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.auto.merk)
+            @Html.DisplayFor(modelItem => item.auto.kenteken)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.werkplaat.naam)
@@ -37,9 +39,9 @@
 		<td>
 			@if (User.IsInRole("Admin"))
 			{	
-			@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+			@Html.ActionLink("Edit", "Edit", new { id=item.onderhoudsdatum })
 			<br />
-			@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+			@Html.ActionLink("Delete", "Delete", new { id=item.onderhoudsdatum })
 			}
 		</td>
     </tr>

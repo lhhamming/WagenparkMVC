@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d2d8216ba3d948ccae845298a4e15b7a" Name="Diagram1">
-        <EntityTypeShape EntityType="AutoModel.AspNetUser" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoModel.AspNetUser" Width="1.5" PointX="6.375" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AutoModel.auto" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="AutoModel.dealer" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="AutoModel.onderhoud" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />

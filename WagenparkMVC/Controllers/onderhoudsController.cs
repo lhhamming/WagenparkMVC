@@ -67,17 +67,25 @@ namespace WagenparkMVC.Controllers
         // GET: onderhouds/Edit/5
         public ActionResult Edit(DateTime id)
         {
+            onderhoud onderhoud = db.onderhouds.Find(id);
+            try
+            {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            onderhoud onderhoud = db.onderhouds.Find(id);
             if (onderhoud == null)
             {
                 return HttpNotFound();
             }
             ViewBag.auto_kenteken = new SelectList(db.autoes, "kenteken", "merk", onderhoud.auto_kenteken);
             ViewBag.werkplaat_werkplaatnr = new SelectList(db.werkplaats, "werkplaatnr", "naam", onderhoud.werkplaats_werkplaatsnr);
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('Dit onderdeel van de website is nog niet af');</script>";
+                return RedirectToAction("Index");
+            }
             return View(onderhoud);
         }
 
@@ -106,6 +114,7 @@ namespace WagenparkMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             onderhoud onderhoud = db.onderhouds.Find(id);
             if (onderhoud == null)
             {
@@ -119,9 +128,18 @@ namespace WagenparkMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(DateTime id)
         {
-            onderhoud onderhoud = db.onderhouds.Find(id);
-            db.onderhouds.Remove(onderhoud);
-            db.SaveChanges();
+            try
+            {
+                onderhoud onderhoud = db.onderhouds.Find(id);
+                db.onderhouds.Remove(onderhoud);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                TempData["msg"] = "<script>alert('Dit onderdeel van de website is nog niet af');</script>";
+                return RedirectToAction("Index");
+            }
+
             return RedirectToAction("Index");
         }
 

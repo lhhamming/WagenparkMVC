@@ -19,7 +19,6 @@ namespace WagenparkMVC.Models
         {
             this.onderhouds = new HashSet<onderhoud>();
         }
-    
         public string kenteken { get; set; }
         public string merk { get; set; }
         public string Type { get; set; }
