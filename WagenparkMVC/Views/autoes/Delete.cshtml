@@ -5,34 +5,29 @@
 }
 
 <div class="center jumbotron">
-	<dl class="dl-horizontal">
-		<h2 class="layoutSettings">Auto verwijderen</h2>
-		<dt class="layoutSettings">
-			Merk
-		</dt>
 
-		<dd class="layoutSettings">
-			@Html.DisplayFor(model => model.merk)
-		</dd>
+		<h2 class="layoutSettings">Auto verwijderen?</h2>
 
-		<dt class="layoutSettings">
-			Type
-		</dt>
+		<div class="layoutSettings">
+			Merk: @Html.DisplayFor(model => model.merk)
+		</div>
 
-		<dd class="layoutSettings">
-			@Html.DisplayFor(model => model.Type)
-		</dd>
+		<div class="layoutSettings">
+			Type: @Html.DisplayFor(model => model.Type)
+		</div>
 
-		<dt class="layoutSettings">
-			Dealer
-		</dt>
+		<div class="layoutSettings">
+			Dealer: @Html.DisplayFor(model => model.dealer.naam)
+		</div>
+		@using (Html.BeginForm())
+		{
+		@Html.AntiForgeryToken()
 
-		<dd class="layoutSettings">
-			@Html.DisplayFor(model => model.dealer.naam)
-		</dd>
-		<input type="submit" value="Delete" class="btn btn-info layoutSettings" />
-		<input value="Terug" class="btn btn-danger layoutSettings" onclick="location.href='@Url.Action("Index")'" />
-	</dl>
+		<div class="form-actions no-color">
+			<input type="submit" value="Delete" class="btn btn-warning" />
+			<input value="Terug" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "autoes")'" />
+		</div>
+		}
 </div>
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")

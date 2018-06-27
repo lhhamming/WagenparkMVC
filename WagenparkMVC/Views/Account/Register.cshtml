@@ -11,12 +11,6 @@
             <h3>Register</h3>
             @Html.ValidationSummary("", new { @class = "text-danger layoutSettings" })
             <div>
-                @Html.LabelFor(m => m.DealerID, new { @class = "" })
-                <div>
-                    @Html.EditorFor(m => m.DealerID, new { htmlAttributes = new { @type = "number", @min = "0", @step = "1", @value = "0" , @class = "form-control layoutSettings" } })
-                </div>
-            </div>
-            <div>
                 @Html.LabelFor(m => m.Email, new { @class = "" })
                 <div>
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control layoutSettings" })

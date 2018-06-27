@@ -9,7 +9,7 @@ using WagenparkMVC.Models;
 
 namespace WagenparkMVC.Controllers
 {
-
+    [Authorize]
     public class RolesController : Controller
     {
 

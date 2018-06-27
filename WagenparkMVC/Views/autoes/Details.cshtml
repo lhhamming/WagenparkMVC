@@ -30,8 +30,8 @@
 		<dd class="layoutSettings">
 			@Html.DisplayFor(model => model.dealer.naam)
 		</dd>
+	</dl>
 		<input class="layoutSettings" value="Edit" class="btn btn-info" onclick="location.href='@Url.Action("Edit", new { id = Model.kenteken })'" />
 		<input class="layoutSettings"value="Terug" class="btn btn-danger" onclick="location.href='@Url.Action("Index")'" />
-	</dl>
 </div>
 @Styles.Render("~/Content/main.css")
